@@ -24,7 +24,7 @@ env:
 
 jobs:
   amd64:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
@@ -54,7 +54,7 @@ jobs:
             ${{ env.GITHUB_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
 
   aarch64:
-    runs-on: [self-hosted, arm64]
+    runs-on: [blacksmith-8vcpu-ubuntu-2404, arm64]
     permissions:
       contents: read
       packages: write
@@ -87,7 +87,7 @@ jobs:
             ${{ env.GITHUB_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-aarch64
 
   merge-manifest:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     permissions:
       contents: read
       packages: write
